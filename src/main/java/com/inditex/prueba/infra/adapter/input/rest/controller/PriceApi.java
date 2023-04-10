@@ -24,7 +24,7 @@ public class PriceApi {
     private PriceInputPort priceInputPort;
 
 
-    @PostMapping(value = "/", headers = "content-type=application/json", produces= MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "", headers = "content-type=application/json", produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAppliedPrice(@RequestBody PriceRequest request) throws Exception{
 
         log.info("request : " + request.toString());
