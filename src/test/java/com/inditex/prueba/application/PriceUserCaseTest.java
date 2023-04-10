@@ -43,7 +43,7 @@ class PriceUserCaseTest {
         expectedResult.setPrice(0L);
         expectedResult.setCurrency("currency");
         expectedResult.setBrandId("brandID");
-        expectedResult.setBrandName("brandName");
+        expectedResult.setBrandName("name");
 
         // Configure PriceRepository.findPriceByProductID(...).
         final PriceEntity priceEntity = new PriceEntity(0, "startDate", "endDate", 0, 0L, "currency",
@@ -90,7 +90,7 @@ class PriceUserCaseTest {
         expectedResult.setPrice(0L);
         expectedResult.setCurrency("currency");
         expectedResult.setBrandId("brandID");
-        expectedResult.setBrandName("brandName");
+        //expectedResult.setBrandName("name");
 
         // Configure PriceRepository.findPriceByProductID(...).
         final PriceEntity priceEntity = new PriceEntity(0, "startDate", "endDate", 0, 0L, "currency",

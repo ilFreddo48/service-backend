@@ -7,6 +7,7 @@ import com.inditex.prueba.util.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,7 @@ public class ProductH2Adapter implements ProductRepository {
     @Override
     public Product saveProduct(Product product) {
         ProductEntity productEntity = new ProductEntity(product.getId(), product.getName(), null);
+        productEntity.setPrices(new ArrayList<>());
         return productMapper.toProduct(productH2Repository.save(productEntity));
     }
 

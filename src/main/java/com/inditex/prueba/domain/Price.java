@@ -2,6 +2,8 @@ package com.inditex.prueba.domain;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class Price {
 
@@ -14,4 +16,6 @@ public class Price {
         private String currency;
         private String brandId;
         private String brandName;
+
+
 }

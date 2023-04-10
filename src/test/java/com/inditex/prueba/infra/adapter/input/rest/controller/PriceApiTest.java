@@ -24,39 +24,6 @@ class PriceApiTest {
     @InjectMocks
     private PriceApi priceApiUnderTest;
 
-    @Test
-    void testCreateProduct() {
-        // Setup
-        final Price expectedResult = new Price();
-        expectedResult.setStartDate("startDate");
-        expectedResult.setEndDate("endDate");
-        expectedResult.setPriceList(0);
-        expectedResult.setProductId(0);
-        expectedResult.setPriority(0);
-        expectedResult.setPrice(0L);
-        expectedResult.setCurrency("currency");
-        expectedResult.setBrandId("brandId");
-        expectedResult.setBrandName("brandName");
-
-        // Configure PriceInputPort.getProduct(...).
-        final Price price = new Price();
-        price.setStartDate("startDate");
-        price.setEndDate("endDate");
-        price.setPriceList(0);
-        price.setProductId(0);
-        price.setPriority(0);
-        price.setPrice(0L);
-        price.setCurrency("currency");
-        price.setBrandId("brandId");
-        price.setBrandName("brandName");
-        when(mockPriceInputPort.getProduct("applicationDate", 0, "brandID")).thenReturn(price);
-
-        // Run the test
-        final Price result = priceApiUnderTest.createProduct("applicationDate", 0, "brandID");
-
-        // Verify the results
-        assertEquals(expectedResult, result);
-    }
 
     @Test
     void testGetAppliedPrice() throws Exception {

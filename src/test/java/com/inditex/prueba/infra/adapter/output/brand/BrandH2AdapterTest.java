@@ -49,7 +49,7 @@ class BrandH2AdapterTest {
                         new ProductEntity(0, "name", List.of()), null))))).thenReturn(brand);
 
         // Run the test
-        final Brand result = brandH2AdapterUnderTest.getBrandByID("id");
+        final Brand result = brandH2AdapterUnderTest.getBrandByID("0");
 
         // Verify the results
         assertEquals(expectedResult, result);
