@@ -23,8 +23,8 @@ class PriceResponseTest {
     void testCreateResponse() {
         // Setup
         final Price price = new Price();
-        price.setStartDate("startDate");
-        price.setEndDate("endDate");
+        price.setStartDate("2020-06-14-23.59.59");
+        price.setEndDate("2020-06-14-23.59.59");
         price.setPriceList(0);
         price.setProductId(0);
         price.setPriority(0);
@@ -38,7 +38,7 @@ class PriceResponseTest {
         int hour = LocalDateTime.now().getHour();
         int minute = LocalDateTime.now().getMinute();
         int day = LocalDateTime.now().getDayOfMonth();
-        String s = "Test 1: petición a las "+hour+":"+minute+" del día "+ day+" del producto " + price.getProductId() + " 35455 para la brand " + price.getBrandId() + " (" + price.getBrandName() + ")";
+        String s = "Test 1: petición a las "+hour+":"+minute+" del día "+ day+" del producto " + price.getProductId() + " para la brand " + price.getBrandId() + " (" + price.getBrandName() + ")";
 
         // Verify the results
         assertEquals(s, result);

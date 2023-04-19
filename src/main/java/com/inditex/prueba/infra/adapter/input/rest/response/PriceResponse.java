@@ -17,7 +17,7 @@ public class PriceResponse extends PriceRequest {
         int hour = LocalDateTime.now().getHour();
         int minute = LocalDateTime.now().getMinute();
         int day = LocalDateTime.now().getDayOfMonth();
-        String s = "Test 1: petición a las "+hour+":"+minute+" del día "+ day+" del producto " + price.getProductId() + " 35455 para la brand " + price.getBrandId() + " (" + price.getBrandName() + ")";
-        return s;
+
+        return "Test 1: petición a las "+hour+":"+minute+" del día "+ day+" del producto " + price.getProductId() + " para la brand " + price.getBrandId() + " (" + price.getBrandName() + ")";
     }
 }

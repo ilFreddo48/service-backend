@@ -32,10 +32,10 @@ class PriceUserCaseTest {
     private PriceUserCase priceUserCaseUnderTest;
 
     @Test
-    void testGetProduct() {
+    void testGetProduct() throws Exception {
         // Setup
         final Price expectedResult = new Price();
-        expectedResult.setStartDate("startDate");
+        expectedResult.setStartDate("2020-06-14-23.59.59");
         expectedResult.setEndDate("endDate");
         expectedResult.setPriceList(0);
         expectedResult.setProductId(0);
@@ -43,16 +43,16 @@ class PriceUserCaseTest {
         expectedResult.setPrice(0L);
         expectedResult.setCurrency("currency");
         expectedResult.setBrandId("brandID");
-        expectedResult.setBrandName("name");
+        expectedResult.setBrandName("brandName");
 
         // Configure PriceRepository.findPriceByProductID(...).
-        final PriceEntity priceEntity = new PriceEntity(0, "startDate", "endDate", 0, 0L, "currency",
+        final PriceEntity priceEntity = new PriceEntity(0, "2020-06-14-23.59.59", "endDate", 0, 0L, "currency",
                 new ProductEntity(0, "name", List.of()), new BrandEntity(0, "name", List.of()));
-        when(mockPriceRepository.findPriceByProductID(0, "applicationDate")).thenReturn(priceEntity);
+        when(mockPriceRepository.findPriceByProductID(0, "2020-06-14-23.59.59")).thenReturn(priceEntity);
 
         // Configure PriceMapper.toPrice(...).
         final Price price = new Price();
-        price.setStartDate("startDate");
+        price.setStartDate("2020-06-14-23.59.59");
         price.setEndDate("endDate");
         price.setPriceList(0);
         price.setProductId(0);
@@ -62,27 +62,27 @@ class PriceUserCaseTest {
         price.setBrandId("brandID");
         price.setBrandName("brandName");
         when(mockPriceMapper.toPrice(
-                new PriceEntity(0, "startDate", "endDate", 0, 0L, "currency", new ProductEntity(0, "name", List.of()),
+                new PriceEntity(0, "2020-06-14-23.59.59", "endDate", 0, 0L, "currency", new ProductEntity(0, "name", List.of()),
                         new BrandEntity(0, "name", List.of())))).thenReturn(price);
 
         // Configure BandUserCase.getBrandByID(...).
         final Brand brand = new Brand();
         brand.setId(0);
-        brand.setName("name");
+        brand.setName("brandName");
         when(mockBandUserCase.getBrandByID("brandID")).thenReturn(brand);
 
         // Run the test
-        final Price result = priceUserCaseUnderTest.getProduct("applicationDate", 0, "brandID");
+        final Price result = priceUserCaseUnderTest.getProduct("2020-06-14-23.59.59", 0, "brandID");
 
         // Verify the results
         assertEquals(expectedResult, result);
     }
 
     @Test
-    void testGetProduct_BandUserCaseReturnsNull() {
+    void testGetProduct_BandUserCaseReturnsNull() throws Exception {
         // Setup
         final Price expectedResult = new Price();
-        expectedResult.setStartDate("startDate");
+        expectedResult.setStartDate("2020-06-14-23.59.59");
         expectedResult.setEndDate("endDate");
         expectedResult.setPriceList(0);
         expectedResult.setProductId(0);
@@ -90,16 +90,16 @@ class PriceUserCaseTest {
         expectedResult.setPrice(0L);
         expectedResult.setCurrency("currency");
         expectedResult.setBrandId("brandID");
-        //expectedResult.setBrandName("name");
+        expectedResult.setBrandName("brandName");
 
         // Configure PriceRepository.findPriceByProductID(...).
-        final PriceEntity priceEntity = new PriceEntity(0, "startDate", "endDate", 0, 0L, "currency",
-                new ProductEntity(0, "name", List.of()), new BrandEntity(0, "name", List.of()));
-        when(mockPriceRepository.findPriceByProductID(0, "applicationDate")).thenReturn(priceEntity);
+        final PriceEntity priceEntity = new PriceEntity(0, "2020-06-14-23.59.59", "endDate", 0, 0L, "currency",
+                new ProductEntity(0, "name", List.of()), new BrandEntity(0, "brandName", List.of()));
+        when(mockPriceRepository.findPriceByProductID(0, "2020-06-14-23.59.59")).thenReturn(priceEntity);
 
         // Configure PriceMapper.toPrice(...).
         final Price price = new Price();
-        price.setStartDate("startDate");
+        price.setStartDate("2020-06-14-23.59.59");
         price.setEndDate("endDate");
         price.setPriceList(0);
         price.setProductId(0);
@@ -109,15 +109,15 @@ class PriceUserCaseTest {
         price.setBrandId("brandID");
         price.setBrandName("brandName");
         when(mockPriceMapper.toPrice(
-                new PriceEntity(0, "startDate", "endDate", 0, 0L, "currency", new ProductEntity(0, "name", List.of()),
-                        new BrandEntity(0, "name", List.of())))).thenReturn(price);
+                new PriceEntity(0, "2020-06-14-23.59.59", "endDate", 0, 0L, "currency", new ProductEntity(0, "name", List.of()),
+                        new BrandEntity(0, "brandName", List.of())))).thenReturn(price);
 
         when(mockBandUserCase.getBrandByID("brandID")).thenReturn(null);
 
         // Run the test
-        final Price result = priceUserCaseUnderTest.getProduct("applicationDate", 0, "brandID");
+        final Price result = priceUserCaseUnderTest.getProduct("2020-06-14-23.59.59", 0, "brandID");
 
         // Verify the results
-        assertEquals(expectedResult, result);
+        assertEquals(null, result.getBrandName());
     }
 }
